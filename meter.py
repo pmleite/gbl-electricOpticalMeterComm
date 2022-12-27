@@ -1,5 +1,5 @@
 from time import sleep
-from constants import *
+from setup import *
 from serial import Serial as serial
 from obis_codes import OBIS_CODES
 import pandas as pd
@@ -35,8 +35,8 @@ class meter:
         # This method should be improved to handle more types of responses
         # Types of model responses
         # Manufacturer     type response            Manufacturer/Model       ID (I think!)  
-        #   ISKRA          /ISk5MT174-0001           /ISk5MT174             0001
-        #   LANDIS         /LGZ4\\2ZMD3102400.B31    /LGZ4\\2ZMD3102400     B31
+        #   ISKRA          /ISk5MT174-0001           /ISk5MT174                 0001
+        #   LANDIS         /LGZ4\\2ZMD3102400.B31    /LGZ4\\2ZMD3102400         B31
 
         if(response[0] == '/'):
 

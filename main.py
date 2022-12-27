@@ -1,4 +1,4 @@
-from meterReadings import *
+from meter import *
 from urllib.request import urlopen
 
 # Create a meter object
