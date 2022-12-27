@@ -4,7 +4,6 @@ from serial import Serial as serial
 from obis_codes import OBIS_CODES
 import pandas as pd
 
-
 class meter:
 
     # Contructor

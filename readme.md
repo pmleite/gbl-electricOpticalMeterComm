@@ -22,9 +22,9 @@
         sudo chmod 666 /dev/ttyUSB0
 
 
-The **IEC 62054-21*** also know as **IEC 1107***, is an  ASCII protocol and It's easier to work with. The problem is that ***there are lots*** of variations between different meters.
+The **IEC 62054-21*** also know as **IEC 1107***, is an  ASCII protocol and It's easier to work with. The problem is that **there are lots*** of variations between different meters.
 
-If you do not need anything special you can ***try to get readouts*** from the meter.
+If you do not need anything special you can **try to get readouts*** from the meter.
 
 Set serial port to:
 
