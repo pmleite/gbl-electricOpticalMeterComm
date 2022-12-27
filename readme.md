@@ -1,12 +1,15 @@
 How to Setup 
 
-- Import pyserial library (responsable for interaction with the /dev/ttyUSBx COM port)
+- Import pyserial library and pandas library
+  (responsable for interaction with the /dev/ttyUSBx COM port and CSV export, respectively)
 
     ```pip3 install pyserial```
+    ```pip3 install pandas```
 
 - Set permissionto do /dev/ttyUSBx COM
 
     ```sudo chmod 666 /dev/ttyUSB0```
+
 
 
 link
