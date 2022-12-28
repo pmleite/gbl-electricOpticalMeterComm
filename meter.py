@@ -122,6 +122,7 @@ def export_data(type, filename):
     
 # Create a serial port object
 def init_device():
+
     comSettings = serial(DEVICE, BAUD, DATA, PARITY, timeout=TIMEOUT)
     return comSettings
 
