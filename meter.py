@@ -1,7 +1,7 @@
 from time import sleep
 from setup import *
 from serial import Serial as serial
-from obis_codes import OBIS_CODES
+from obis_codes import *
 import pandas as pd
 
 class meter:

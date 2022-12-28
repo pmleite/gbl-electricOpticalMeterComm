@@ -57,5 +57,12 @@ https://www.youtube.com/watch?v=fMvP2U-2cs4
 (importante)
 https://www.gurux.fi/node/5508
 
+## Packed with ##
+
+https://pyinstaller.org/en/stable/man/pyinstaller.html
+https://realpython.com/pyinstaller-python/
+
+pyinstaller main.py --onefile --name meterReader
+
 
 

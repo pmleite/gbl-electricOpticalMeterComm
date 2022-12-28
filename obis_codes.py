@@ -1,3 +1,27 @@
+import re
+
+# decode obis code
+def decode_to_obis_code(collected_data):
+
+        type = re.search("(^[0-9][-][0-9])", collected_data)
+
+        cat = re.search("[:]([0-9C]+[.][0-9]+[.][0-9]+)", collected_data)
+
+        value = re.search("\(([^\(][0-9.0-9A-Z]*)", collected_data)
+
+        if (type):
+                print(type.group(1))
+
+        if (cat): 
+                print(cat.group(1))
+        else:
+                print(cat)
+        
+        if (value):
+                print(value.group(1))   
+
+
+        
 # Description of OBIS code for IEC 62056 standard protocol
 OBIS_CODES    = {
 

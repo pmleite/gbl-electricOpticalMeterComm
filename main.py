@@ -1,24 +1,26 @@
 from meter import *
 from urllib.request import urlopen
 
-# Create a meter object
-meter = meter(init_device())
+decode_to_obis_code('0-0:C.51.2*255(0221212163024)')
 
-if(MODE=='READ'):
+# # Create a meter object
+# meter = meter(init_device())
 
-    # Start hand_shake
-    meter.start_comm()
+# if(MODE=='READ'):
 
-    # Read device info
-    meter.device_info()
-    print(f'Marca.....: {meter.brand}')
-    print(f'Modelo....: {meter.model}')
-    print(f'ID........: {meter.id}')
+#     # Start hand_shake
+#     meter.start_comm()
 
-    meter.read_data()
-    export_data('csv', 'data.csv')
+#     # Read device info
+#     meter.device_info()
+#     print(f'Marca.....: {meter.brand}')
+#     print(f'Modelo....: {meter.model}')
+#     print(f'ID........: {meter.id}')
 
-else:
-    print_message('TEST')
-    meter.start_comm()
-    meter.test_read()
+#     meter.read_data()
+#     export_data('csv', 'data.csv')
+
+# else:
+#     print_message('TEST')
+#     meter.start_comm()
+#     meter.test_read()

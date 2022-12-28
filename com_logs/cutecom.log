@@ -1,3 +1,25 @@
+REgex to detct values inside ()
+TOOOOOOP
+\(([0-9.0-9A-Z]*) 
+
+regex get after:
+[:]([0-9C][.][0-9][.][0-9])
+
+regex to get x.y.z
+(^[0-9][.][0-9][.][0-9])
+
+regex to get x-y
+(^[0-9][-][0-9])
+
+regex to get c.x.y
+([cC][.][0-9]+[.][0-9]+)
+
+
+
+
+
+
+---- Capture 1 ----
 /ISk5ME172-0000
 1-0:0.9.1*255(152812)
 1-0:0.9.2*255(0221219)
