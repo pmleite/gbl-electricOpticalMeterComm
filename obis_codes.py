@@ -47,7 +47,7 @@ def retriveFactor(collected_data):
 
 # Retreive value from data
 def retreiveValue(collected_data):
-        return re.findall("\(([\s:.0-9a-zA-Z^-]+|[\s0-9:]*\))", collected_data)
+        return re.findall("\(([\s:.0-9a-zA-Z^-]+|[\s0-9:]*)\)", collected_data)
 
 def retreiveCode(collected_data):
 
