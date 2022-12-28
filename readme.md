@@ -66,23 +66,17 @@ pyinstaller main.py --onefile --name meterReader
 
 ## Regex ##
 
-Regex to detct values inside ()
-\(([0-9.0-9A-Z]*)
+Regex expressions used
 
-regex get after:
-[:]([0-9C][.][0-9][.][0-9])
+    re.findall("[\*]([0-9]+)", collected_data) # retrive factor
+    re.findall("\(([\s:.0-9a-zA-Z^-]+|[\s0-9:]*\))", collected_data) #retrive values
 
-regex to get x.y.z
-(^[0-9][.][0-9][.][0-9])
+    re.search("(^[0-9]+[-][0-9]+)", collected_data)  # X-Y
+    re.findall("^[cC][.][0-9]+[.][0-9]+", collected_data) # C.X.Y 
+    re.findall("^[0-9]*[.][0-9]*[.][0-9]*", collected_data) # XX.YY.ZZ
 
-regex to get x-y
-(^[0-9][-][0-9])
+    re.search("[:]([0-9CF]*[.][0-9F]*[.][0-9F]*)", collected_data) # retrieve subcodes
 
-regex to get c.x.y
-(^[cC][.][0-9]+[.][0-9]+)
-
-regex to get *xyz
-[\*]([0-9]+)
 
 ## OBIS Code ##
 https://onemeter.com/docs/device/obis/
