@@ -77,6 +77,7 @@ class meter:
                 response = self.device.readline().decode('utf-8').replace('\r\n','')
                 if (response[0] == '!'): reading=False
                 process_data(response)
+                decode_obis_code(response)
 
             print_message('SUCCESS')
             self.device.close()
@@ -98,7 +99,6 @@ def process_data(data):
     if (data[0] != '!'):
         list = data.split('(')
         list[1] = list[1].replace(')','')
-        print('.', end='')
         #Store data in a dictionary
         DATA_COLLECTED[list[0]]=list[1]
     else:

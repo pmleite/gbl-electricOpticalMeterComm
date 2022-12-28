@@ -1,27 +1,76 @@
 import re
 
 # decode obis code
-def decode_to_obis_code(collected_data):
+def decode_obis_code(collected_data):
 
-        type = re.search("(^[0-9][-][0-9])", collected_data)
+        value  = retreiveValue(collected_data)
+        code   = retreiveCode(collected_data)
+        factor = retriveFactor(collected_data)
 
-        cat = re.search("[:]([0-9C]+[.][0-9]+[.][0-9]+)", collected_data)
+        if(code != None or collected_data[0] != '!'):
 
-        value = re.search("\(([^\(][0-9.0-9A-Z]*)", collected_data)
+                print(f'Code: ', end='')
+                
+                # Print codes
+                for codes in code:
+                        print(f'{codes} ', end='')
+ 
+                # Check if code is in OBIS_CODES, if so, print description
+                if code[-1] in OBIS_CODES:       
+                        codeDesc = (OBIS_CODES[code[-1]]['Desc'])
+                        print(f'({codeDesc}) ', end='')
+                else:
+                        print(f'(No code description found for {code[-1]}) ', end='')
 
-        if (type):
-                print(type.group(1))
+                
+                # Check if factor is in data and print it
+                if (factor):
+                        print(f'{factor[0]} ', end='')
 
-        if (cat): 
-                print(cat.group(1))
+                # Print value(s)
+                for item in value:
+                        print(f'{item} ', end='')
+               
+                if code[-1] in OBIS_CODES:
+                        codeUnit = (OBIS_CODES[code[-1]]['Unit'])
+                        print(codeUnit, end='')
+
+                print('')
         else:
-                print(cat)
-        
-        if (value):
-                print(value.group(1))   
+                if(collected_data[0] != '!'):
+                        print(f'No code found for this data : {collected_data}')
 
 
-        
+# Retreive factor from data
+def retriveFactor(collected_data):
+        return re.findall("[\*]([0-9]+)", collected_data)
+
+# Retreive value from data
+def retreiveValue(collected_data):
+        return re.findall("\(([\s:.0-9a-zA-Z^-]+|[\s0-9:]*\))", collected_data)
+
+def retreiveCode(collected_data):
+
+        # Try to find a code
+        typeA = re.search("(^[0-9]+[-][0-9]+)", collected_data)  # X-Y
+        typeB = re.findall("^[cC][.][0-9]+[.][0-9]+", collected_data) # C.X.Y
+        typeC = re.findall("^[0-9]*[.][0-9]*[.][0-9]*", collected_data) # XX.YY.ZZ
+
+        # Special case of 0-0:F.F.0(00000000) codes
+        if (typeA): # XX-YY
+                subcode = re.search("[:]([0-9CF]*[.][0-9F]*[.][0-9F]*)", collected_data)
+                if (subcode):
+                        return [f'{typeA.group(1)}', f'{subcode.group(1)}']
+        elif (typeB): # CC.XX.YY
+                return typeB
+
+        elif (typeC): # XX.YY.ZZ
+                return typeC
+        else:
+                return None
+
+
+ 
 # Description of OBIS code for IEC 62056 standard protocol
 OBIS_CODES    = {
 
