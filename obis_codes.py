@@ -3,9 +3,21 @@ import re
 # decode obis code
 def decode_obis_code(collected_data):
 
+        # A-B:C.D.E*F
+        # group	description	examples
+
+        # A	medium	                                1 = electricity, 8 = water
+        # B	channel	                                0 = no channel available
+        # C	physical unit, depends on A	        power, current, voltage...
+        # D	measurement type, depends on A and C	maximum, current value, energy...
+        # E	tariff	                                0 = total, 1 = tariff 1, 2 = tariff 2 ...
+        # F	separate values defined by A-E	        billing periods, 255 if not used
+
+        export_data = ''
+
         value  = retreiveValue(collected_data)
         code   = retreiveCode(collected_data)
-        factor = retriveFactor(collected_data)
+        factor = retriveBillingPeriod(collected_data)
 
         if(code != None or collected_data[0] != '!'):
 
@@ -14,41 +26,54 @@ def decode_obis_code(collected_data):
                 # Print codes
                 for codes in code:
                         print(f'{codes} ', end='')
+                        export_data += f'{codes} '
  
                 # Check if code is in OBIS_CODES, if so, print description
                 if code[-1] in OBIS_CODES:       
                         codeDesc = (OBIS_CODES[code[-1]]['Desc'])
-                        print(f'({codeDesc}) ', end='')
+                        print(f'({codeDesc})', end=' ')
+                        export_data += f',{codeDesc},'
                 else:
                         print(f'(No code description found for {code[-1]}) ', end='')
+                        export_data += f',No code description found for {code[-1]},'
 
                 
                 # Check if factor is in data and print it
                 if (factor):
                         print(f'{factor[0]} ', end='')
+                        export_data += f'{factor[0]},'
+                else:
+                        export_data += 'n/a,'
 
                 # Print value(s)
                 for item in value:
                         print(f'{item} ', end='')
+                        export_data += f'{item} '
                
                 if code[-1] in OBIS_CODES:
                         codeUnit = (OBIS_CODES[code[-1]]['Unit'])
                         print(codeUnit, end='')
+                        export_data += f',{codeUnit}'
+                else:
+                        export_data += ',n/a'
 
                 print('')
         else:
                 if(collected_data[0] != '!'):
                         print(f'No code found for this data : {collected_data}')
+        
+        return(export_data)
 
 
 # Retreive factor from data
-def retriveFactor(collected_data):
+def retriveBillingPeriod(collected_data):
         return re.findall("[\*]([0-9]+)", collected_data)
 
 # Retreive value from data
 def retreiveValue(collected_data):
         return re.findall("\(([\s:.0-9a-zA-Z^-]+|[\s0-9:]*)\)", collected_data)
 
+# Retreive code from data
 def retreiveCode(collected_data):
 
         # Try to find a code
@@ -69,8 +94,6 @@ def retreiveCode(collected_data):
         else:
                 return None
 
-
- 
 # Description of OBIS code for IEC 62056 standard protocol
 OBIS_CODES    = {
 

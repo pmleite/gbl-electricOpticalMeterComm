@@ -19,6 +19,9 @@ INFO_MESSAGES = {'PT': {'START': 'Iniciando comunicação com o dispositivo...',
                         'IMAGE': 'Imagem do Dispositivo',
                         'MARCA': 'Marca',
                         'MODELO': 'Modelo',
+                        'ID': 'ID',
+                        'BRAND': 'Marca',
+                        'MODEL': 'Modelo',
                         'ID': 'ID'},
 
                 # English
@@ -41,6 +44,9 @@ INFO_MESSAGES = {'PT': {'START': 'Iniciando comunicação com o dispositivo...',
                         'IMAGE': 'Device Image',
                         'MARCA': 'Brand',
                         'MODELO': 'Model',
+                        'ID': 'ID',
+                        'BRAND': 'Brand',
+                        'MODEL': 'Model',
                         'ID': 'ID'},
 
                 # French       
@@ -63,6 +69,9 @@ INFO_MESSAGES = {'PT': {'START': 'Iniciando comunicação com o dispositivo...',
                         'IMAGE': 'Image du dispositif',
                         'MARCA': 'Marque',
                         'MODELO': 'Modèle',
+                        'ID': 'ID',
+                        'BRAND': 'Marque',
+                        'MODEL': 'Modèle',
                         'ID': 'ID'}, 
                 
                 # Spanish 
@@ -85,5 +94,8 @@ INFO_MESSAGES = {'PT': {'START': 'Iniciando comunicação com o dispositivo...',
                         'IMAGE': 'Imagen del dispositivo',
                         'MARCA': 'Marca',
                         'MODELO': 'Modelo',
-                        'ID': 'ID'}
+                        'ID': 'ID',
+                        'BRAND': 'Marca',
+                        'MODEL': 'Modelo',
+                        'ID': 'ID'},
                 }

@@ -4,6 +4,7 @@ from serial import Serial as serial
 from obis_codes import *
 import pandas as pd
 
+
 class meter:
 
     # Contructor
@@ -75,9 +76,9 @@ class meter:
            
             while(reading):
                 response = self.device.readline().decode('utf-8').replace('\r\n','')
-                if (response[0] == '!'): reading=False
-                process_data(response)
-                decode_obis_code(response)
+                if (response[0] == '!'): break
+                process_data(decode_obis_code(response))
+
 
             print_message('SUCCESS')
             self.device.close()
@@ -96,13 +97,15 @@ class meter:
 
 # Process data
 def process_data(data):
-    if (data[0] != '!'):
-        list = data.split('(')
-        list[1] = list[1].replace(')','')
-        #Store data in a dictionary
-        DATA_COLLECTED[list[0]]=list[1]
-    else:
-        print('')
+
+    li  = list(data.split(","))
+    key = f'{li[0]}*{li[2]}'
+    DATA_COLLECTED[key] = {
+                             'Descr': li[1],
+                             'BPeri': li[2],
+                             'Value': li[3],
+                             'Unit' : li[4]
+                            }
 
 # Print data
 def print_data():
@@ -134,8 +137,7 @@ def clear_buffer(self):
 
 # Print Mess in the console
 def print_message(msg):
-    if (LANGUAGE == 'PT' or LANGUAGE == 'FR'):
+    if (LANGUAGE == 'PT' or LANGUAGE == 'FR' or LANGUAGE == 'ES'):
         print(f'{INFO_MESSAGES[LANGUAGE][msg]}')
     else:
         print(f'{INFO_MESSAGES["EN"][msg]}')
-

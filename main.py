@@ -1,7 +1,9 @@
 from meter import *
+import time
 
 # Create a meter object
 meter = meter(init_device())
+timeStamp = str(time.time()).replace('.','_')
 
 if(MODE=='READ'):
     # Start hand_shake
@@ -9,12 +11,15 @@ if(MODE=='READ'):
 
     # Read device info
     meter.device_info()
-    print(f'Marca.....: {meter.brand}')
-    print(f'Modelo....: {meter.model}')
-    print(f'ID........: {meter.id}')
+    print(f'\n{INFO_MESSAGES[LANGUAGE]["BRAND"]}\t: {meter.brand}')
+    print(f'{INFO_MESSAGES[LANGUAGE]["MODEL"]}\t: {meter.model}')
+    print(f'{INFO_MESSAGES[LANGUAGE]["ID"]}\t: {meter.id}\n')
 
     meter.read_data()
-    export_data('csv', 'data.csv')
+
+    # Export data to csv
+    fileName = f'{meter.brand}_{meter.model}_{timeStamp}.csv'
+    export_data('csv', fileName)
 
 else:
     print_message('TEST')
