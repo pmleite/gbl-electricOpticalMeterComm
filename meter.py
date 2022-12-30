@@ -1,7 +1,9 @@
 from time import sleep
 from setup import *
-from serial import Serial as serial
 from obis_codes import *
+
+import serial
+import serial.tools.list_ports
 import pandas as pd
 
 
@@ -77,8 +79,11 @@ class meter:
             while(reading):
                 response = self.device.readline().decode('utf-8').replace('\r\n','')
                 if (response[0] == '!'): break
-                process_data(decode_obis_code(response))
 
+                if (VERBOSE):
+                     print(f' {response} : ', end='')
+
+                process_data(decode_obis_code(response))
 
             print_message('SUCCESS')
             self.device.close()
@@ -88,12 +93,7 @@ class meter:
             self.device.close()
             exit()
            
-    # Read for test proposes
-    def test_read(self):
-        print_message('TEST')
-        while True:
-            response = self.device.readline().decode('utf-8').replace('\r\n','')
-            print(response)
+
 
 # Process data
 def process_data(data):
@@ -122,12 +122,31 @@ def export_data(type, filename):
         print_message('CSV')
     else:
         print_message('INVALID_TYPE')
-    
-# Create a serial port object
-def init_device():
 
-    comSettings = serial(DEVICE, BAUD, DATA, PARITY, timeout=TIMEOUT)
-    return comSettings
+
+
+# Get serial ports
+def get_serial_ports():
+    
+    ports = serial.tools.list_ports.comports()
+    print(f'pySerial version: {serial.__version__}\n')
+
+    if (len(ports) == 0):
+        return False
+
+    else:
+        for p in ports:
+            print(f'{INFO_MESSAGES[LANGUAGE]["FOUND"]}\t: {p[0]}  ->  ({p[1]})')
+            print(f'{INFO_MESSAGES[LANGUAGE]["WILL_BE_USED"]}\t: {p[0]}\n')
+        return p[0]
+    
+
+
+# Create a serial port object
+def init_device():  
+      
+    comDevice = serial.Serial(DEVICE, BAUD, DATA, PARITY, timeout=TIMEOUT)
+    return comDevice
 
 # Clear the buffer
 def clear_buffer(self):
@@ -141,3 +160,11 @@ def print_message(msg):
         print(f'{INFO_MESSAGES[LANGUAGE][msg]}')
     else:
         print(f'{INFO_MESSAGES["EN"][msg]}')
+
+    
+# Intro Message
+def intro():
+    print(f'{INFO_MESSAGES[LANGUAGE]["INTRO"]}, {INFO_MESSAGES[LANGUAGE]["VERSION"]}')
+    print(f'{INFO_MESSAGES[LANGUAGE]["AUTHOR"]}')
+
+

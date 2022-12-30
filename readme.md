@@ -84,3 +84,22 @@ https://onemeter.com/docs/device/obis/
 
 
 
+Marca
+Modelo
+ID
+
+Data 
+hora
+
+1.8.x
+
+sincronismo com hora atómica
+
+prime edp
+
+
+
+
+
+
+

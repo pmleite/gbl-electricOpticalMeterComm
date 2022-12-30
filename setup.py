@@ -15,10 +15,9 @@ SLEEP_DELAY = 0.2
 ACK_DELAY   = 1
 
 # Software defs  (Working Modes - READ and TEST)
-MODE        = 'READ' # READ, CONFIG, TEST 
 GUI         = False   # True or False
 LANGUAGE    = 'PT'   # PT, EN, FR, ES
-VERBOSE     = True   # True or False
+VERBOSE     = False   # True or False
 APP_NAME    = 'meterReader'
 VER         = '0.1'
 

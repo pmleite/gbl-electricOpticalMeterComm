@@ -1,11 +1,14 @@
 from meter import *
 import time
 
-# Create a meter object
-meter = meter(init_device())
-timeStamp = str(time.time()).replace('.','_')
+intro()
+hasPorts = get_serial_ports()
 
-if(MODE=='READ'):
+if (hasPorts):
+    # Create a meter object
+    meter = meter(init_device())
+    timeStamp = str(time.time()).replace('.','_')
+
     # Start hand_shake
     meter.start_comm()
 
@@ -22,6 +25,6 @@ if(MODE=='READ'):
     export_data('csv', fileName)
 
 else:
-    print_message('TEST')
-    meter.start_comm()
-    meter.test_read()
+    print_message("NO_PORTS")
+    print_message("CHECK")
+
