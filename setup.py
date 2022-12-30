@@ -3,7 +3,6 @@ from brands_models import BRANDS_MODELS
 from obis_codes import OBIS_CODES
 
 # TOOL to interaction with COM - cuteCom
-
 # COM defs (algumas podem ser passadas como argumentos no futuro)
 DEVICE           = '/dev/ttyUSB0'
 BAUD             = 300

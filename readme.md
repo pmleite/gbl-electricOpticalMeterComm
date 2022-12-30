@@ -62,7 +62,8 @@ https://www.gurux.fi/node/5508
 https://pyinstaller.org/en/stable/man/pyinstaller.html
 https://realpython.com/pyinstaller-python/
 
-pyinstaller main.py --onefile --name meterReader
+pyinstaller main.py --onefile --name meterReader  (linux)
+pyinstaller main.py -w --onefile --name meterReader (windows, feito em ambiente windows)
 
 ## Regex ##
 

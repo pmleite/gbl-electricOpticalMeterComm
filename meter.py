@@ -6,7 +6,6 @@ import serial
 import serial.tools.list_ports
 import pandas as pd
 
-
 class meter:
 
     # Contructor
@@ -121,8 +120,6 @@ def export_data(type, filename):
     else:
         print_message('INVALID_TYPE')
 
-
-
 # Get serial ports
 def get_serial_ports():
     
@@ -138,8 +135,6 @@ def get_serial_ports():
             print(f'{INFO_MESSAGES[LANGUAGE]["WILL_BE_USED"]}\t: {p[0]}\n')
         return p[0]
     
-
-
 # Create a serial port object
 def init_device():  
       
@@ -159,7 +154,6 @@ def print_message(msg):
     else:
         print(f'{INFO_MESSAGES["EN"][msg]}')
 
-    
 # Intro Message
 def intro():
     print(f'{APP_NAME}')
