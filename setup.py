@@ -5,21 +5,21 @@ from obis_codes import OBIS_CODES
 # TOOL to interaction with COM - cuteCom
 
 # COM defs (algumas podem ser passadas como argumentos no futuro)
-DEVICE      = '/dev/ttyUSB0'
-BAUD        = 300
-DATA        = 7
-PARITY      = 'E'
-TIMEOUT     = 20 
-PROTO       = 'IEC-62056-21'
-SLEEP_DELAY = 0.2
-ACK_DELAY   = 1
+DEVICE           = '/dev/ttyUSB0'
+BAUD             = 300
+DATA             = 7
+PARITY           = 'E'
+TIMEOUT          = 20 
+PROTO            = 'IEC-62056-21'
+SLEEP_DELAY      = 0.2
+ACK_DELAY        = 1
+DEFAULT_PASSWORD = '00000000'
 
-# Software defs  (Working Modes - READ and TEST)
-GUI         = False   # True or False
+# Software defs
+GUI         = False   # True or False (NOT IMPLEMENTED YET)
 LANGUAGE    = 'PT'   # PT, EN, FR, ES
 VERBOSE     = False   # True or False
 APP_NAME    = 'meterReader'
-VER         = '0.1'
 
 # Escape Sequences
 NULL= '\x00'   # Null

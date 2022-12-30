@@ -93,8 +93,6 @@ class meter:
             self.device.close()
             exit()
            
-
-
 # Process data
 def process_data(data):
 
@@ -164,6 +162,7 @@ def print_message(msg):
     
 # Intro Message
 def intro():
+    print(f'{APP_NAME}')
     print(f'{INFO_MESSAGES[LANGUAGE]["INTRO"]}, {INFO_MESSAGES[LANGUAGE]["VERSION"]}')
     print(f'{INFO_MESSAGES[LANGUAGE]["AUTHOR"]}')
 
