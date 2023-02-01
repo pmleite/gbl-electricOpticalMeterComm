@@ -62,7 +62,7 @@ def decode_obis_code(collected_data):
                 if(collected_data[0] != '!'):
                         print(f'No code found for this data : {collected_data}')
         
-        return(export_data)
+        return export_data
 
 
 # Retreive factor from data
@@ -93,6 +93,7 @@ def retreiveCode(collected_data):
                 return typeC
         else:
                 return None
+
 
 # Description of OBIS code for IEC 62056 standard protocol
 OBIS_CODES    = {

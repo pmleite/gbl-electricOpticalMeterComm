@@ -8,7 +8,7 @@ import pandas as pd
 
 class meter:
 
-    # Contructor
+    # Constructor
     def __init__(self, device):
 
         self.device = device
@@ -148,7 +148,7 @@ def clear_buffer(self):
     self.device.reset_output_buffer()
 
 # Print Mess in the console
-def print_message(msg):
+def print_message(msg: str):
     if (LANGUAGE == 'PT' or LANGUAGE == 'FR' or LANGUAGE == 'ES'):
         print(f'{INFO_MESSAGES[LANGUAGE][msg]}')
     else:

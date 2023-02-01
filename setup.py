@@ -16,7 +16,7 @@ DEFAULT_PASSWORD = '00000000'
 
 # Software defs
 GUI         = False   # True or False (NOT IMPLEMENTED YET)
-LANGUAGE    = 'PT'   # PT, EN, FR, ES
+LANGUAGE    = 'PT'    # PT, EN, FR, ES
 VERBOSE     = False   # True or False
 APP_NAME    = 'meterReader'
 
